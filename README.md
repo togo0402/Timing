@@ -38,6 +38,7 @@ Timing/
 - [NFC 机制](docs/NFC.md)
 - [变更记录](docs/CHANGELOG.md)
 - [工具总结](docs/TOOLS.md)
+- [GitHub 发布说明](docs/GITHUB.md)
 - [AI 开发 Skill](skills/timing-dev/SKILL.md)
 
 ---

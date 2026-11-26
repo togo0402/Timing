@@ -21,6 +21,7 @@
 /dist/*.png
 /dist/*.log
 /dist/ui*.xml
+/dist/*.zip
 
 # 旧版 APK 仅保留当前 release
 /dist/Timing-1.0*.apk
