@@ -38,6 +38,10 @@ Android 的 NFC 分发顺序：
   - 无 Ndef 但 `NdefFormatable` → format 后写入；
   - 无 NDEF → 诊断「无 NDEF 的卡（身份证/门禁卡等）」。
 
+## 身份证 / eID 卡
+
+身份证芯片是 **eID 安全芯片（ISO 14443-B / 专用 APDU）**，不是普通 NDEF 标签。部分 ROM（含 HyperOS）会把身份证优先路由给系统 eID/钱包服务，导致即使 Timing 在前台、`ReaderMode` 已开启，仍可能先弹「选择处理应用」。这不是 Timing 的绑定逻辑能改变的；身份证只适合做“非空白卡”测试，不建议作为日常计时卡。
+
 ## 推荐硬件
 
 - **NTAG213 / NTAG215** 白卡或贴纸（0.5–2 元），贴书桌/床头/卫生间。
