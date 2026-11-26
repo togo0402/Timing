@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_timer_label">计时器</string>
+    <string name="widget_ring_label">今日占比</string>
+    <string name="widget_list_label">今日汇总</string>
+
+    <string name="shortcut_timer_short">计时器</string>
+    <string name="shortcut_timer_long">添加「计时器」小部件</string>
+    <string name="shortcut_ring_short">今日占比</string>
+    <string name="shortcut_ring_long">添加「今日占比」小部件</string>
+    <string name="shortcut_list_short">今日汇总</string>
+    <string name="shortcut_list_long">添加「今日汇总」小部件</string>
+    <string name="shortcut_pin_requested">已请求添加到桌面</string>
+    <string name="shortcut_pin_unsupported">当前桌面不支持直接添加，请长按桌面空白处手动添加</string>
+</resources>

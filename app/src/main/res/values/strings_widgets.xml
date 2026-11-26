@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 小部件选择器里的描述 -->
+    <string name="widget_timer_widget_desc">当前事件计时环（2×2）</string>
+    <string name="widget_ring_widget_desc">今日 24 小时分布环（2×2）</string>
+    <string name="widget_tiles_widget_desc">今日一级分类磁贴（4×2 / 4×4）</string>
+
+    <!-- W1 当前事件计时环 -->
+    <string name="widget_timer_card_desc">当前事件计时环</string>
+    <string name="widget_timer_idle_title">未在计时</string>
+    <string name="widget_timer_idle_hint">点击开始</string>
+    <string name="widget_timer_stop_hint">点击停止</string>
+
+    <!-- W2 今日 24h 分布环 -->
+    <string name="widget_ring_card_desc">今日 24 小时时间分布环，点击查看统计</string>
+
+    <!-- W3 今日一级分类磁贴 -->
+    <string name="widget_tiles_card_desc">今日一级分类磁贴</string>
+    <string name="widget_tiles_title">今日 · 一级分类</string>
+    <string name="widget_tiles_empty">今天还没有记录</string>
+    <string name="widget_tile_desc">事件磁贴</string>
+    <string name="widget_tile_a11y">%1$s，今日 %2$s，占比 %3$d%%</string>
+</resources>

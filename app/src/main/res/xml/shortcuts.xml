@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <shortcut
+        android:shortcutId="widget_timer"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_timer"
+        android:shortcutShortLabel="@string/shortcut_timer_short"
+        android:shortcutLongLabel="@string/shortcut_timer_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.togotiming.app"
+            android:targetClass="com.togotiming.app.AddWidgetActivity">
+            <extra android:name="widget" android:value="timer" />
+        </intent>
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="widget_ring"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_ring"
+        android:shortcutShortLabel="@string/shortcut_ring_short"
+        android:shortcutLongLabel="@string/shortcut_ring_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.togotiming.app"
+            android:targetClass="com.togotiming.app.AddWidgetActivity">
+            <extra android:name="widget" android:value="ring" />
+        </intent>
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="widget_list"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_list"
+        android:shortcutShortLabel="@string/shortcut_list_short"
+        android:shortcutLongLabel="@string/shortcut_list_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.togotiming.app"
+            android:targetClass="com.togotiming.app.AddWidgetActivity">
+            <extra android:name="widget" android:value="list" />
+        </intent>
+    </shortcut>
+</shortcuts>

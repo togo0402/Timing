@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 设置页 -->
+    <string name="settings_title">设置</string>
+    <string name="settings_nfc_title">NFC 碰触</string>
+    <string name="settings_nfc_desc">关闭后，碰触标签不会再开始或停止计时</string>
+    <string name="settings_import_export_title">分类导入 / 导出</string>
+    <string name="settings_import_export_desc">JSON 备份分类结构，不含时间记录</string>
+    <string name="settings_font_title">小部件字体</string>
+    <string name="settings_font_desc">导入 .ttf / .otf，单文件不超过 5MB</string>
+    <string name="settings_font_none">未导入字体，使用系统字体</string>
+    <string name="settings_font_current">当前字体：%1$s</string>
+    <string name="settings_font_pick">选择字体文件</string>
+    <string name="settings_font_clear">清除字体</string>
+    <string name="settings_font_cleared">已清除字体</string>
+    <string name="settings_font_preview">字体预览：Timing 时间记录 0123 ABC</string>
+    <string name="settings_font_importing">导入中…</string>
+    <string name="settings_font_import_ok">字体已导入</string>
+    <string name="settings_font_import_fail">字体导入失败：%1$s</string>
+    <string name="settings_permission_title">权限引导</string>
+    <string name="settings_permission_desc">通知、精确闹钟、悬浮窗、电池优化、NFC</string>
+    <string name="settings_about_title">关于</string>
+    <string name="settings_about_desc">版本、包名与作者</string>
+    <string name="settings_keepalive_title">HyperOS / 小米保活引导</string>
+    <string name="settings_keepalive_body">自启动：在「应用设置 → 自启动」中允许 Timing 自启动。\n省电策略：把「省电策略」设为「无限制」。\n后台弹出界面：允许「后台弹出界面」与「锁屏显示」。</string>
+    <string name="settings_keepalive_open">打开应用设置</string>
+    <string name="settings_keepalive_note">以上仅为文字引导，系统仍可能回收后台，本应用不承诺自动保活成功。</string>
+    <string name="settings_no_network">本应用不申请网络权限：没有 INTERNET 权限，也没有任何联网代码。</string>
+    <string name="settings_local_only">所有数据仅保存在本机。</string>
+
+    <!-- 权限引导页 -->
+    <string name="perm_title">权限引导</string>
+    <string name="perm_intro">权限不阻塞主流程：被拒绝时自动走降级路径。从系统设置返回后，状态会自动刷新。</string>
+    <string name="perm_granted">已授予</string>
+    <string name="perm_denied">未授予</string>
+    <string name="perm_declared">已声明</string>
+    <string name="perm_action_settings">去设置</string>
+    <string name="perm_action_request">允许</string>
+    <string name="perm_notifications_title">通知</string>
+    <string name="perm_notifications_desc">用于计时中的常驻通知和停止按钮。拒绝后计时仍可用，但通知栏没有入口，锁屏时不易停止。</string>
+    <string name="perm_notification_granted">通知权限已授予</string>
+    <string name="perm_notification_denied">通知权限被拒：计时仍可用，但不再有常驻通知</string>
+    <string name="perm_exact_alarm_title">精确闹钟</string>
+    <string name="perm_exact_alarm_desc">用于小部件在后台按分钟级刷新。拒绝后刷新降级为不精确唤醒（约 15 分钟一次），时长仍按开始时间计算。</string>
+    <string name="perm_overlay_title">悬浮窗</string>
+    <string name="perm_overlay_desc">为桌面滑动提示预留（P1 才使用）。拒绝后不影响当前计时与记录。</string>
+    <string name="perm_battery_title">电池优化白名单</string>
+    <string name="perm_battery_desc">避免长时间计时被系统冻结。拒绝后后台刷新与通知可能延迟，重新打开 App 后时长会自动校正。</string>
+    <string name="perm_nfc_title">NFC</string>
+    <string name="perm_nfc_desc">用于碰触标签开始或停止计时；这一项是系统 NFC 开关状态，不是运行时权限。关闭后碰标签不会触发计时。</string>
+    <string name="perm_nfc_no_hardware">本机未检测到 NFC 硬件，相关功能不可用。</string>
+    <string name="perm_fgs_title">前台服务（specialUse）</string>
+    <string name="perm_fgs_desc">已在清单声明，无运行时开关。计时期间以前台服务保持时长准确并刷新小部件。</string>
+    <string name="perm_open_failed">无法打开系统设置页</string>
+
+    <!-- 导入 / 导出页 -->
+    <string name="ie_title">分类导入 / 导出</string>
+    <string name="ie_import_section">导入分类</string>
+    <string name="ie_import_hint">粘贴 JSON 文本，或从文件读取。任一校验失败都会整体回滚。</string>
+    <string name="ie_paste_placeholder">在此粘贴导出的 JSON…</string>
+    <string name="ie_parse_import">解析并导入</string>
+    <string name="ie_pick_file">从文件读取</string>
+    <string name="ie_busy">处理中…</string>
+    <string name="ie_empty_text">请先粘贴 JSON 文本，或从文件读取</string>
+    <string name="ie_read_fail">无法读取所选文件</string>
+    <string name="ie_import_fail">导入失败</string>
+    <string name="ie_conflict_title">发现同名分类</string>
+    <string name="ie_conflict_body">已有 %1$d 个相同的分类路径：%2$s\n请选择处理方式（不会静默覆盖）。</string>
+    <string name="ie_conflict_skip">跳过同名</string>
+    <string name="ie_conflict_rename">重命名导入</string>
+    <string name="ie_conflict_cancel">整体取消</string>
+    <string name="ie_cancelled">已取消导入</string>
+    <string name="ie_report_title">导入结果</string>
+    <string name="ie_report_body">导入 %1$d 项 / 跳过 %2$d 项 / 重命名 %3$d 项</string>
+    <string name="ie_report_hint">可到「分类」页查看导入结果。</string>
+    <string name="ie_export_section">导出分类</string>
+    <string name="ie_export_desc">导出为 JSON（仅分类结构，不含时间记录）。</string>
+    <string name="ie_export_file">导出到文件</string>
+    <string name="ie_export_copy">复制到剪贴板</string>
+    <string name="ie_export_done">已导出到文件</string>
+    <string name="ie_export_fail">导出失败</string>
+    <string name="ie_copy_done">已复制到剪贴板</string>
+    <string name="ie_copy_fail">复制失败</string>
+
+    <!-- 关于页 -->
+    <string name="about_title">关于</string>
+    <string name="about_version">版本 %1$s</string>
+    <string name="about_package">包名 %1$s</string>
+    <string name="about_author_title">作者</string>
+    <string name="about_author_github">togo0402@github</string>
+    <string name="about_author_deepseek">DeepSeek</string>
+    <string name="about_author_label_github">GitHub</string>
+    <string name="about_author_label_ai">AI 协作</string>
+    <string name="about_no_network">本应用不申请网络权限，无任何联网行为；所有数据仅保存在本机。</string>
+</resources>

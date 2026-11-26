@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 时间记录导入 / 导出页（v1.2） -->
+    <string name="rio_title">记录导入 / 导出</string>
+
+    <!-- 导出 -->
+    <string name="rio_export_section">导出记录</string>
+    <string name="rio_export_desc">选择时间范围与事件范围，导出已结束的时间记录（JSON）。</string>
+    <string name="rio_date_range_label">时间范围</string>
+    <string name="rio_start_date">开始日期</string>
+    <string name="rio_end_date">结束日期</string>
+    <string name="rio_date_to">至</string>
+    <string name="rio_type_scope_label">事件范围</string>
+    <string name="rio_type_scope_all">全部事件</string>
+    <string name="rio_type_scope_count">已选 %1$d 个分类（含子级）</string>
+    <string name="rio_select_all">全选</string>
+    <string name="rio_clear_selection">清空</string>
+    <string name="rio_type_hint">勾选父级会自动包含其子级；不选任何分类表示导出全部事件。</string>
+    <string name="rio_type_empty">还没有可选分类，将导出全部事件。</string>
+    <string name="rio_export_file">导出到文件</string>
+    <string name="rio_export_copy">复制到剪贴板</string>
+    <string name="rio_export_done">已导出到文件</string>
+    <string name="rio_export_fail">导出失败</string>
+    <string name="rio_copy_done">已复制到剪贴板</string>
+    <string name="rio_copy_fail">复制失败</string>
+    <string name="rio_summary_title">导出结果</string>
+    <string name="rio_summary_body">记录 %1$d 条 / 分类 %2$d 个</string>
+    <string name="rio_summary_range">时间范围 %1$s ~ %2$s</string>
+    <string name="rio_summary_empty">所选范围内没有已结束的记录，导出的 JSON 记录为空。</string>
+
+    <!-- 导入 -->
+    <string name="rio_import_section">导入记录</string>
+    <string name="rio_import_hint">粘贴 JSON 文本，或从文件读取。导入在事务内完成：重复记录自动跳过，缺失分类自动创建。</string>
+    <string name="rio_paste_placeholder">在此粘贴时间记录 JSON…</string>
+    <string name="rio_import_action">解析并导入</string>
+    <string name="rio_pick_file">从文件读取</string>
+    <string name="rio_read_done">已读取文件，点击「解析并导入」继续</string>
+    <string name="rio_empty_text">请先粘贴 JSON 文本，或从文件读取</string>
+    <string name="rio_read_fail">无法读取所选文件</string>
+    <string name="rio_import_fail">导入失败</string>
+    <string name="rio_import_busy">处理中…</string>
+    <string name="rio_import_report_title">导入结果</string>
+    <string name="rio_import_report_body">导入 %1$d 条 / 跳过重复 %2$d 条 / 创建分类 %3$d 个 / 缺失或非法 %4$d 条</string>
+    <string name="rio_import_report_hint">记录已刷新，可到首页、时间轴或统计页查看。</string>
+    <string name="rio_import_done">已导入 %1$d 条记录</string>
+
+    <!-- 设置页「数据」分组入口 -->
+    <string name="settings_record_io_title">记录导入 / 导出</string>
+    <string name="settings_record_io_desc">按时间范围与事件范围备份时间记录（JSON）</string>
+</resources>

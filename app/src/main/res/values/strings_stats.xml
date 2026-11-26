@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 统计页（StatsScreen.kt）文案，独立文件，避免与 strings_core.xml 冲突 -->
+    <string name="stats_title">统计</string>
+    <string name="stats_tab_today">今日</string>
+    <string name="stats_tab_week">本周</string>
+    <string name="stats_tab_month">本月</string>
+    <string name="stats_refresh">刷新</string>
+
+    <string name="stats_total_label">总时长</string>
+    <string name="stats_share_hint">按一级分类聚合，点击展开子分类</string>
+    <string name="stats_ongoing_hint">含进行中记录，每 30 秒自动刷新</string>
+    <string name="stats_others">其它</string>
+    <string name="stats_untracked">未统计</string>
+    <string name="stats_back_to_today">回到今天</string>
+    <string name="stats_nav_prev">上一段</string>
+    <string name="stats_nav_next">下一段</string>
+    <string name="stats_pick_date">选择日期</string>
+    <string name="stats_calendar_prev_month">上个月</string>
+    <string name="stats_calendar_next_month">下个月</string>
+    <string name="stats_calendar_weekdays">一 二 三 四 五 六 日</string>
+
+    <string name="stats_empty_today">今天还没有记录</string>
+    <string name="stats_empty_week">本周还没有记录</string>
+    <string name="stats_empty_month">本月还没有记录</string>
+    <string name="stats_empty_hint">去「计时」页开始记录，统计会出现在这里</string>
+
+    <string name="stats_loading">加载中…</string>
+    <string name="stats_error_title">统计加载失败</string>
+    <string name="stats_error_unknown">未知错误</string>
+    <string name="stats_error_banner">刷新失败：%1$s</string>
+    <string name="stats_retry">重试</string>
+
+    <string name="stats_direct_records">直接记录（含自身）</string>
+    <string name="stats_no_child_records">该分类在区间内没有子记录</string>
+    <string name="stats_detail_summary">共 %1$s · %2$d 条</string>
+    <string name="stats_detail_empty">该区间内没有记录</string>
+    <string name="stats_ongoing">进行中</string>
+    <string name="stats_close">关闭</string>
+</resources>

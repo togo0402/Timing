@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- NFC 页（NfcScreen.kt）文案，独立文件，避免与其它模块字符串冲突 -->
+
+    <!-- 顶部 -->
+    <string name="nfc_title">NFC</string>
+    <string name="nfc_subtitle">碰一下开始 / 再碰一下结束；不同标签会询问是否切换</string>
+
+    <!-- NFC 硬件状态卡 -->
+    <string name="nfc_hardware_title">NFC 硬件</string>
+    <string name="nfc_hardware_ready">碰一下即可开始 / 结束计时</string>
+    <string name="nfc_hardware_off">系统 NFC 未开启</string>
+    <string name="nfc_hardware_unsupported">本机不支持 NFC</string>
+    <string name="nfc_hardware_on">已开启</string>
+    <string name="nfc_action_settings">去设置</string>
+    <string name="nfc_master_title">NFC 计时总开关</string>
+    <string name="nfc_master_desc">关闭后，碰标签只亮屏不触发计时</string>
+
+    <!-- 绑定 -->
+    <string name="nfc_bind_new">绑定新标签</string>
+    <string name="nfc_section_bound">已绑定标签</string>
+    <string name="nfc_section_bound_count">%1$d 个</string>
+    <string name="nfc_empty">还没有绑定任何标签。点「绑定新标签」，把标签贴到设备背面即可读取 UID。</string>
+    <string name="nfc_deleted_type">（分类已删除）</string>
+    <string name="nfc_cd_delete">删除绑定</string>
+
+    <!-- 使用提示：保持简短 3 条 -->
+    <string name="nfc_hints_title">使用提示</string>
+    <string name="nfc_hint_1">碰一下开始，再碰一下结束。</string>
+    <string name="nfc_hint_2">不同标签会先询问是否切换。</string>
+    <string name="nfc_hint_3">绑定时自动写入标签，后台碰触也能拉起。</string>
+
+    <!-- 批量管理 / 删除确认 -->
+    <string name="nfc_batch_manage">批量管理</string>
+    <string name="nfc_selection_count">已选 %1$d 个</string>
+    <string name="nfc_select_all">全选</string>
+    <string name="nfc_batch_delete">删除 %1$d 个</string>
+    <string name="nfc_delete_title">删除绑定？</string>
+    <string name="nfc_delete_single_desc">只删除 UID 绑定，不影响计时记录。</string>
+    <string name="nfc_delete_batch_desc">将删除 %1$d 个标签的 UID 绑定，不影响计时记录。</string>
+    <string name="nfc_delete_confirm">删除</string>
+
+    <!-- 绑定对话框 -->
+    <string name="nfc_bind_dialog_title">绑定 NFC 标签</string>
+    <string name="nfc_bind_dialog_hint">把标签贴近设备背面…</string>
+    <string name="nfc_bind_waiting">等待读取 UID</string>
+    <string name="nfc_bind_uid">UID：%1$s</string>
+    <string name="nfc_bind_pick_type">选择要绑定到的叶子活动：</string>
+    <string name="nfc_bind_action">绑定</string>
+</resources>

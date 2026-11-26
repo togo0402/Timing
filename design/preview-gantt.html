@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>Timing v1.2 · Gantt + Calendar 参考</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 2240px; height: 1420px; padding: 46px 52px;
+    font-family: "MiSans", "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    color: #101828; -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(900px 600px at 8% 0%, #dce9ff, transparent 60%),
+      radial-gradient(800px 600px at 94% 8%, #e7f7ff, transparent 55%),
+      radial-gradient(700px 500px at 50% 108%, #ece5ff, transparent 62%),
+      #eef2fa;
+  }
+  .head { display: flex; align-items: center; gap: 16px; margin-bottom: 26px; }
+  .head h1 { font-size: 28px; font-weight: 800; letter-spacing: -.4px; }
+  .head p { font-size: 12.5px; color: #6b7a94; margin-top: 3px; }
+  .tag { margin-left: auto; font-size: 12px; color: #3b4a63; background: rgba(255,255,255,.7); border: 1px solid rgba(255,255,255,.9); padding: 8px 14px; border-radius: 999px; }
+
+  .row { display: flex; gap: 34px; align-items: flex-start; }
+  .wrap { width: 400px; }
+  .label { text-align: center; margin-top: 14px; font-size: 12px; color: #64748b; font-weight: 650; }
+
+  .phone {
+    width: 400px; height: 844px; border-radius: 54px; border: 9px solid #0d1117; position: relative; overflow: hidden;
+    background:
+      radial-gradient(430px 360px at 10% -4%, #cfe2ff, transparent 62%),
+      radial-gradient(430px 380px at 108% 12%, #d8f3ff, transparent 58%),
+      radial-gradient(470px 420px at 50% 112%, #e9e3ff, transparent 60%),
+      linear-gradient(180deg, #f7f9fe, #eef3fc);
+    box-shadow: 0 40px 90px -30px rgba(23,42,84,.55);
+  }
+  .status { height: 44px; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; font-size: 13px; font-weight: 700; }
+  .status .r { display: flex; gap: 6px; opacity: .85; }
+  .screen { padding: 2px 16px 0; height: calc(844px - 44px); position: relative; }
+
+  .topbar { display: flex; align-items: center; padding: 4px 2px 12px; }
+  .date-chip {
+    display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 999px;
+    background: rgba(255,255,255,.72); border: 1px solid rgba(255,255,255,.95);
+    box-shadow: 0 8px 22px -14px rgba(31,72,150,.45);
+  }
+  .date-chip .d { font-size: 12.5px; font-weight: 750; }
+  .date-chip .w { font-size: 10.5px; color: #7c8aa3; }
+  .title { font-size: 27px; font-weight: 800; letter-spacing: -.6px; margin-top: 3px; }
+  .cal-btn {
+    margin-left: auto; width: 44px; height: 44px; border-radius: 999px; display: grid; place-items: center;
+    background: rgba(255,255,255,.72); border: 1px solid rgba(255,255,255,.95);
+    box-shadow: 0 8px 22px -14px rgba(31,72,150,.45);
+  }
+
+  .glass {
+    background: linear-gradient(150deg, rgba(255,255,255,.78), rgba(255,255,255,.46));
+    border: 1px solid rgba(255,255,255,.9);
+    box-shadow: 0 26px 50px -30px rgba(31,72,150,.42), inset 0 1px 0 rgba(255,255,255,.9);
+  }
+
+  /* Gantt */
+  .gantt { border-radius: 28px; padding: 14px 14px 12px; }
+  .ruler { display: flex; justify-content: space-between; font-size: 9.5px; color: #98a5ba; font-weight: 700; padding: 0 2px 6px; }
+  .gantt-body { position: relative; }
+  .now-line { position: absolute; top: 0; bottom: 0; width: 2px; background: #FF5A5F; border-radius: 2px; z-index: 5; }
+  .now-dot { position: absolute; top: -4px; left: -3px; width: 8px; height: 8px; border-radius: 50%; background: #FF5A5F; box-shadow: 0 0 0 4px rgba(255,90,95,.16); }
+  .now-tag { position: absolute; top: -18px; left: -14px; font-size: 8.5px; color: #FF5A5F; font-weight: 800; white-space: nowrap; }
+  .gr { position: relative; height: 42px; }
+  .gr + .gr { border-top: 1px dashed rgba(16,24,40,.05); }
+  .bar {
+    position: absolute; top: 8px; height: 26px; border-radius: 10px; display: flex; align-items: center;
+    padding: 0 8px; color: #fff; font-size: 10px; font-weight: 750; white-space: nowrap; overflow: hidden;
+    box-shadow: 0 8px 16px -10px rgba(20,50,110,.45);
+  }
+  .bar.soft { color: #26364f; }
+  .bar .t { font-weight: 600; opacity: .8; margin-left: 5px; font-size: 9px; }
+  .out { position: absolute; top: 15px; font-size: 9.5px; font-weight: 700; color: #33415c; white-space: nowrap;
+    background: rgba(255,255,255,.86); border: 1px solid rgba(255,255,255,.95); border-radius: 7px; padding: 3px 6px;
+    box-shadow: 0 4px 10px -6px rgba(31,72,150,.5); z-index: 4; }
+  .row-label { position: absolute; left: 0; top: 12px; font-size: 9px; color: #8a98ae; font-weight: 700; width: 34px; }
+  .grid-line { position: absolute; top: 0; bottom: 0; width: 1px; background: rgba(16,24,40,.05); }
+
+  .legend { display: flex; gap: 10px; align-items: center; font-size: 9.5px; color: #8794a9; margin: 8px 4px 0; }
+
+  /* calendar sheet */
+  .cal-sheet {
+    position: absolute; left: 12px; right: 12px; top: 112px; border-radius: 28px; padding: 16px;
+    background: rgba(255,255,255,.9); border: 1px solid #fff;
+    box-shadow: 0 30px 60px -30px rgba(31,72,150,.55);
+    z-index: 20;
+  }
+  .cal-head { display: flex; align-items: center; margin-bottom: 10px; }
+  .cal-head b { font-size: 14px; }
+  .cal-head span { margin-left: auto; font-size: 10px; color: #8b98ad; }
+  .week { display: grid; grid-template-columns: repeat(7,1fr); gap: 4px; font-size: 9px; color: #97a4b8; text-align: center; margin-bottom: 4px; }
+  .days { display: grid; grid-template-columns: repeat(7,1fr); gap: 4px; }
+  .day { height: 38px; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 11px; font-weight: 650; color: #33415c; }
+  .day.dim { color: #c3cbd9; }
+  .day.sel { background: linear-gradient(135deg, #4E9BFF, #2E7DEE); color: #fff; box-shadow: 0 8px 16px -8px rgba(46,125,238,.7); }
+  .day .dot { width: 4px; height: 4px; border-radius: 50%; background: #3D8EFF; margin-top: 2px; }
+  .day.sel .dot { background: #fff; }
+
+  .nav {
+    position: absolute; left: 14px; right: 14px; bottom: 14px; height: 64px; border-radius: 24px;
+    display: flex; align-items: center; justify-content: space-around;
+    background: rgba(255,255,255,.78); border: 1px solid rgba(255,255,255,.95);
+    box-shadow: 0 20px 40px -16px rgba(31,72,150,.35);
+  }
+  .ni { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 9px; color: #8b98ad; font-weight: 650; }
+  .ni.on { color: #1E6FE0; }
+
+  /* notes */
+  .notes { width: 680px; display: flex; flex-direction: column; gap: 14px; margin-left: 10px; }
+  .note { border-radius: 22px; padding: 17px 20px; background: rgba(255,255,255,.7); border: 1px solid rgba(255,255,255,.95); box-shadow: 0 20px 40px -30px rgba(31,72,150,.45); }
+  .note h4 { font-size: 13px; font-weight: 800; margin-bottom: 6px; }
+  .note p { font-size: 11.5px; line-height: 1.8; color: #667085; }
+  .kbd { font-size: 10.5px; padding: 2px 6px; border-radius: 6px; background: rgba(61,142,255,.1); color: #2470D8; font-weight: 700; }
+
+  .badge { position: absolute; right: 14px; top: 60px; font-size: 9px; padding: 5px 9px; border-radius: 999px; background: rgba(61,142,255,.14); color: #2470D8; font-weight: 800; z-index: 30; }
+</style>
+</head>
+<body>
+
+<div class="head">
+  <div>
+    <h1>Timing v1.2 · 日历 + Gantt 时间轴（参考稿，未实装）</h1>
+    <p>用横向甘特条看全天，双指缩放看细节；日期收成胶囊，下拉/点击展开月历</p>
+  </div>
+  <div class="tag">先看方案 · 不装</div>
+</div>
+
+<div class="row">
+
+  <!-- 1 full day gantt -->
+  <div class="wrap">
+    <div class="phone">
+      <div class="status"><span>22:35</span><span class="r">● ▮</span></div>
+      <div class="screen">
+        <div class="topbar">
+          <div>
+            <div class="date-chip">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2470D8" stroke-width="2.2"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+              <div><div class="d">11月26日</div><div class="w">周四 · 今天</div></div>
+            </div>
+            <div class="title">今天</div>
+          </div>
+          <div class="cal-btn">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#34507a" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+          </div>
+        </div>
+
+        <div class="gantt glass">
+          <div class="ruler"><span>00</span><span>06</span><span>12</span><span>18</span><span>24</span></div>
+          <div class="gantt-body" style="height: 500px">
+            <div class="grid-line" style="left:25%"></div>
+            <div class="grid-line" style="left:50%"></div>
+            <div class="grid-line" style="left:75%"></div>
+
+            <div class="gr"><div class="bar" style="left:34.0%;width:3.1%;background:#8E6BFF"></div><div class="out" style="left:37.6%">晨间阅读 45m</div></div>
+            <div class="gr"><div class="bar" style="left:37.8%;width:5.2%;background:#3D8EFF"></div><div class="out" style="left:43.5%">考研 · 英语 1h15</div></div>
+            <div class="gr"><div class="bar" style="left:43.8%;width:1.7%;background:#2BB673"></div><div class="out" style="left:46.0%">休息 25m</div></div>
+            <div class="gr"><div class="bar" style="left:50.0%;width:2.8%;background:#FFB020"></div><div class="out" style="left:53.3%">午饭 40m</div></div>
+            <div class="gr"><div class="bar" style="left:56.3%;width:6.3%;background:#3D8EFF"></div><div class="out" style="left:63.0%">考研 · 政治 1h30</div></div>
+            <div class="gr"><div class="bar" style="left:63.2%;width:1.3%;background:#D81B60"></div><div class="out" style="left:65.0%">整理 18m</div></div>
+            <div class="gr"><div class="bar" style="left:66.7%;width:4.5%;background:#8E24AA"></div><div class="out" style="left:71.7%">项目 · 评审 1h05</div></div>
+            <div class="gr"><div class="bar" style="left:72.9%;width:2.1%;background:#2BB673"></div><div class="out" style="left:75.5%">休息 30m</div></div>
+            <div class="gr"><div class="bar" style="left:79.2%;width:9.0%;background:#8E24AA"></div><div class="out" style="left:88.8%">项目 · 实现 2h10</div></div>
+            <div class="gr"><div class="bar" style="left:89.6%;width:4.2%;background:#3D8EFF"></div><div class="out" style="left:86.0%;transform:translateX(-100%)">考研 · 复盘 1h</div></div>
+
+            <div class="now-line" style="left:94%">
+              <div class="now-dot"></div>
+              <div class="now-tag">22:35</div>
+            </div>
+          </div>
+          <div class="legend">
+            <span>色条长度 = 时长</span><span>·</span><span>空白天 = 未统计</span><span>·</span><span>红色 = 现在</span>
+          </div>
+        </div>
+
+        <div class="nav">
+          <div class="ni on"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#1E6FE0" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>计时</div>
+          <div class="ni"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#8b98ad" stroke-width="2"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg>统计</div>
+          <div class="ni"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#8b98ad" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg>分类</div>
+          <div class="ni"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#8b98ad" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0v5l2 3H4l2-3z"/></svg>NFC</div>
+          <div class="ni"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#8b98ad" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>设置</div>
+        </div>
+      </div>
+    </div>
+    <div class="label">全天 Gantt：一屏看完 24h，横向时间轴</div>
+  </div>
+
+  <!-- 2 calendar expanded -->
+  <div class="wrap">
+    <div class="phone">
+      <div class="status"><span>22:35</span><span class="r">● ▮</span></div>
+      <div class="screen">
+        <div class="topbar">
+          <div>
+            <div class="date-chip">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2470D8" stroke-width="2.2"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+              <div><div class="d">11月26日</div><div class="w">周四 · 今天</div></div>
+            </div>
+            <div class="title">今天</div>
+          </div>
+          <div class="cal-btn">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#34507a" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+          </div>
+        </div>
+
+        <div class="cal-sheet">
+          <div class="cal-head"><b>2026 年 11 月</b><span>‹　›</span></div>
+          <div class="week"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
+          <div class="days">
+            <div class="day dim">26</div><div class="day dim">27</div><div class="day dim">28</div><div class="day dim">29</div><div class="day dim">30</div><div class="day dim">31</div><div class="day">1</div>
+            <div class="day">2</div><div class="day">3</div><div class="day">4</div><div class="day">5</div><div class="day">6</div><div class="day">7</div><div class="day">8</div>
+            <div class="day">9</div><div class="day">10</div><div class="day">11</div><div class="day">12</div><div class="day">13</div><div class="day">14</div><div class="day">15</div>
+            <div class="day">16</div><div class="day">17</div><div class="day">18</div><div class="day">19</div><div class="day">20</div><div class="day">21</div><div class="day">22</div>
+            <div class="day">23</div><div class="day">24</div><div class="day">25</div><div class="day sel">26<span class="dot"></span></div><div class="day">27</div><div class="day">28</div><div class="day">29</div>
+            <div class="day">30</div><div class="day dim">1</div><div class="day dim">2</div><div class="day dim">3</div><div class="day dim">4</div><div class="day dim">5</div><div class="day dim">6</div>
+          </div>
+          <div style="text-align:center;font-size:9px;color:#9aa6ba;margin-top:10px">上滑收起日历</div>
+        </div>
+
+        <div class="gantt glass" style="margin-top:150px;opacity:.5">
+          <div class="ruler"><span>00</span><span>06</span><span>12</span><span>18</span><span>24</span></div>
+          <div class="gantt-body" style="height:420px">
+            <div class="grid-line" style="left:25%"></div><div class="grid-line" style="left:50%"></div><div class="grid-line" style="left:75%"></div>
+            <div class="gr"><div class="bar" style="left:13%;width:16%;background:#3D8EFF">考研 · 英语</div></div>
+            <div class="gr"><div class="bar" style="left:46%;width:14%;background:#3D8EFF">考研 · 政治</div></div>
+            <div class="gr"><div class="bar" style="left:67%;width:11%;background:#8E24AA">项目 · 评审</div></div>
+          </div>
+        </div>
+
+        <div class="nav">
+          <div class="ni on"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#1E6FE0" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>计时</div>
+          <div class="ni"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#8b98ad" stroke-width="2"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg>统计</div>
+          <div class="ni"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#8b98ad" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg>分类</div>
+          <div class="ni"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#8b98ad" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0v5l2 3H4l2-3z"/></svg>NFC</div>
+          <div class="ni"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#8b98ad" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>设置</div>
+        </div>
+      </div>
+    </div>
+    <div class="label">日期胶囊 → 下拉/点击展开月历，选完自动收起</div>
+  </div>
+
+  <!-- 3 zoomed gantt -->
+  <div class="wrap">
+    <div class="phone">
+      <div class="badge">双指缩放 · 08:00–12:00</div>
+      <div class="status"><span>22:35</span><span class="r">● ▮</span></div>
+      <div class="screen">
+        <div class="topbar">
+          <div>
+            <div class="date-chip">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2470D8" stroke-width="2.2"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+              <div><div class="d">11月26日</div><div class="w">周四 · 今天</div></div>
+            </div>
+            <div class="title">今天</div>
+          </div>
+          <div class="cal-btn">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#34507a" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+          </div>
+        </div>
+
+        <div class="gantt glass">
+          <div class="ruler"><span>08:00</span><span>09:00</span><span>10:00</span><span>11:00</span><span>12:00</span></div>
+          <div class="gantt-body" style="height: 500px">
+            <div class="grid-line" style="left:25%"></div><div class="grid-line" style="left:50%"></div><div class="grid-line" style="left:75%"></div>
+
+            <div class="gr" style="height:64px"><div class="bar" style="left:4.2%;width:18.75%;background:#8E6BFF;height:34px;font-size:11px">晨间阅读<span class="t">08:10–08:55 · 45m</span></div></div>
+            <div class="gr" style="height:64px"><div class="bar" style="left:27.1%;width:31.25%;background:#3D8EFF;height:34px;font-size:11px">考研 · 英语<span class="t">09:05–10:20 · 1h15</span></div></div>
+            <div class="gr" style="height:64px"><div class="bar" style="left:35.4%;width:12.5%;background:#2BB673;height:34px;font-size:11px">休息<span class="t">10:25–10:55</span></div></div>
+            <div class="gr" style="height:64px"><div class="bar soft" style="left:45.8%;width:29.2%;background:#DDE7F7;height:34px;font-size:11px">未统计<span class="t">10:55–11:42</span></div></div>
+            <div class="gr" style="height:64px"><div class="bar" style="left:75%;width:8%;background:#FFB020;height:34px;font-size:11px">走动<span class="t">12m</span></div></div>
+
+            <div class="now-line" style="left:97%"><div class="now-dot"></div></div>
+          </div>
+          <div class="legend"><span>缩放后显示精确起止 / 时长</span><span>·</span><span>左右拖动平移</span></div>
+        </div>
+
+        <div class="nav">
+          <div class="ni on"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#1E6FE0" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>计时</div>
+          <div class="ni"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#8b98ad" stroke-width="2"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg>统计</div>
+          <div class="ni"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#8b98ad" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg>分类</div>
+          <div class="ni"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#8b98ad" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0v5l2 3H4l2-3z"/></svg>NFC</div>
+          <div class="ni"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#8b98ad" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>设置</div>
+        </div>
+      </div>
+    </div>
+    <div class="label">双指放大后：细节、起止时间、拖拽边缘调整</div>
+  </div>
+
+  <div class="notes">
+    <div class="note">
+      <h4>为什么改成横向 Gantt</h4>
+      <p>一天 24h 横向铺开，一屏就能看到全部事件与空档；短事件至少有一个可点的最小宽度，不会像纵向 24h 那样被压成一条缝。信息密度比现在的纵向卡片高很多。</p>
+    </div>
+    <div class="note">
+      <h4>双指缩放</h4>
+      <p>默认 <span class="kbd">0–24h</span> 全览；双指放大切到 6h / 2h / 30min 窗口，横向平移。放大后每根条显示精确起止和时长，长按左右边缘拖动改时间（替代现在的上下缘拖拽）。</p>
+    </div>
+    <div class="note">
+      <h4>日历收纳</h4>
+      <p>顶部只留「11月26日 周四」胶囊；点击或下拉展开月历，选日期后自动收起。首次进入不占高度，想看日期时再拉出来。</p>
+    </div>
+    <div class="note">
+      <h4>实现顺序建议</h4>
+      <p>先做 <span class="kbd">只读 Gantt + 日期胶囊</span>（不动拖拽）；确认观感后再加双指缩放、左右边缘拖拽、日历下拉动画。避免一次性重写手势导致回归。</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

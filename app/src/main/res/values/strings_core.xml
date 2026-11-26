@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Timing</string>
+    <string name="app_desc">基于 NFC 碰触与个性化小部件的时间记录工具</string>
+
+    <string name="nav_timer">计时</string>
+    <string name="nav_stats">统计</string>
+    <string name="nav_types">分类</string>
+    <string name="nav_nfc">NFC</string>
+    <string name="nav_settings">设置</string>
+
+    <string name="action_start">开始</string>
+    <string name="action_stop">停止</string>
+    <string name="action_cancel">取消</string>
+    <string name="action_save">保存</string>
+    <string name="action_delete">删除</string>
+    <string name="action_ok">确定</string>
+    <string name="action_back">返回</string>
+
+    <string name="widget_timer_desc">当前事件计时器</string>
+    <string name="widget_ring_desc">今日时间占比环</string>
+    <string name="widget_list_desc">今日事件排行</string>
+    <string name="widget_stop">停止</string>
+    <string name="widget_empty_today">今天还没有记录</string>
+    <string name="widget_idle">--</string>
+</resources>

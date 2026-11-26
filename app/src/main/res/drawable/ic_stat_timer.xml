@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- 实心秒表外环（evenOdd 挖空） -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:fillType="evenOdd"
+        android:pathData="M12,4.5 A8,8 0 1,0 12,20.5 A8,8 0 1,0 12,4.5 Z M12,7.4 A5.1,5.1 0 1,1 12,17.6 A5.1,5.1 0 1,1 12,7.4 Z" />
+
+    <!-- 指针 -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M11.1,10.2 H12.9 V13.2 H11.1 Z" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M13,11.7 H16 V13.4 H13 Z" />
+
+    <!-- 顶部按钮 -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M8.8,1.2 H15.2 A1.4,1.4 0 0 1 16.6,2.6 V3.4 A1.4,1.4 0 0 1 15.2,4.8 H8.8 A1.4,1.4 0 0 1 7.4,3.4 V2.6 A1.4,1.4 0 0 1 8.8,1.2 Z" />
+</vector>

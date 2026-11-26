@@ -1,0 +1,28 @@
+*.iml
+.gradle/
+.kotlin/
+/local.properties
+/.idea/
+.DS_Store
+/build
+/app/build
+/captures
+.externalNativeBuild
+.cxx
+
+# 本地签名与敏感配置（绝对不要提交）
+/keystore/
+/keystore.properties
+
+# 本机临时/分析/旧产物
+/_local/
+/base.apk
+/_extract/
+/dist/*.png
+/dist/*.log
+/dist/ui*.xml
+
+# 旧版 APK 仅保留当前 release
+/dist/Timing-1.0*.apk
+/dist/Timing-1.1*.apk
+/dist/Timing-1.2*.apk

@@ -1,0 +1,35 @@
+Timing 1.3.0 构建信息
+=====================
+
+包名:        com.togotiming.app
+版本:        1.3.0 (versionCode 9)
+minSdk: 26 / targetSdk 36 / ABI arm64-v8a
+APK:         Timing-1.3.0-release.apk
+大小:        2,033,977 字节
+SHA-256:     02642F7AF2F8FAA06C34DB05CF596983C6E94EB4A573B240EFAA6C5CDE9511DE
+签名:        v2 + v3
+权限:        无 INTERNET
+
+1.3.0:
+  - 记录导入/导出：设置 → 数据
+  - 导出可选开始/结束日期（默认最近 7 天）与事件范围（分类树多选）
+  - 导出已结束记录、按区间裁剪；JSON 文件或剪贴板
+  - 导入支持文件/粘贴，自动补建缺失分类，同 typeId+startAt+endAt 去重
+  - JSON: version/kind/exportedAt/from/to/types/records
+
+NFC 结论（依据时间日志官方文档）:
+  - 空白卡写入 = 把本 App 的 NDEF+AAR 写进卡，卡只认该 App，之后静默拉起
+  - 非空白卡（手环/身份证/门禁）系统每次弹框选 App，OPPO/一加也一样，系统层面无解
+  - 与开发者认证无关
+  - NTAG213/215 绑定一次即写入 Timing NDEF+AAR，等价时间日志空白卡
+
+实机已验证:
+  - 1.3.0 安装启动
+  - 设置「数据」出现分类/记录两个入口
+  - 记录导入导出页面（日期范围、事件树、导出/导入）
+  - Gantt/统计/NFC 页面
+
+未验证:
+  - 记录导出文件/剪贴板实际回环
+  - 导入缺失分类自动创建
+  - NTAG215 实卡

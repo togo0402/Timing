@@ -1,0 +1,19 @@
+- insert:
+    - id: timing-mcp-uiux
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: uiux
+        transport: stdio
+        command: 'D:/app/node/node.exe'
+        args:
+          - 'C:/Users/seven/AppData/Roaming/npm/node_modules/ui-ux-pro-mcp/dist/index.js'
+        failOnStartupError: false
+    - id: timing-mcp-wash
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: wash
+        transport: stdio
+        command: 'D:/app/node/node.exe'
+        args:
+          - 'C:/Users/seven/AppData/Roaming/npm/node_modules/@menzies-mariesta-com/wash-compose-mcp/dist/index.js'
+        failOnStartupError: false

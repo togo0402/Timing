@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 分类页：三级树管理 -->
+    <string name="types_header_count">共 %1$d 个分类</string>
+    <string name="types_new_root">新建一级分类</string>
+    <string name="types_new_child">新建子分类</string>
+    <string name="types_empty">还没有分类，点击右上角「新建一级分类」开始</string>
+    <string name="types_row_target">目标 %1$d 分钟</string>
+    <string name="types_row_children_target">%1$d 个子分类 · 目标 %2$d 分钟</string>
+    <string name="types_target_edit">设置目标</string>
+    <string name="types_add_child">添加子分类</string>
+    <string name="types_rename">重命名</string>
+    <string name="types_recolor">改色</string>
+    <string name="types_delete">删除</string>
+    <string name="types_action_create">创建</string>
+    <string name="types_name_label">名称</string>
+    <string name="types_name_required_hint">名称不能为空</string>
+    <string name="types_target_label">每日目标（分钟）</string>
+    <string name="types_target_title">每日目标</string>
+    <string name="types_target_hint">请输入 1-1440 之间的分钟数</string>
+    <string name="types_parent_label">上级分类：%1$s</string>
+    <string name="types_pick_color">自定义颜色</string>
+    <string name="types_rename_title">重命名分类</string>
+    <string name="types_recolor_title">修改颜色</string>
+    <string name="types_recolor_has_children_message">「%1$s」共有 %2$d 个子分类，请选择颜色更新方式</string>
+    <string name="types_recolor_cascade">同时更新派生颜色的子分类</string>
+    <string name="types_recolor_parent_only">只改该分类（子分类颜色不再跟随）</string>
+    <string name="types_delete_title">删除分类</string>
+    <string name="types_delete_choice_message">「%1$s」共有 %2$d 个子分类，请选择删除方式</string>
+    <string name="types_delete_promote">子分类提升为一级</string>
+    <string name="types_delete_subtree">连同子分类一起删除</string>
+    <string name="types_delete_leaf_message">确定删除「%1$s」？历史记录会保留。</string>
+
+    <!-- 批量选择 / 批量删除 -->
+    <string name="types_batch_entry">批量</string>
+    <string name="types_selected_count">已选 %1$d 个</string>
+    <string name="types_select_all">全选</string>
+    <string name="types_unselect_all">取消全选</string>
+    <string name="types_batch_delete_action">删除 %1$d 个</string>
+    <string name="types_batch_delete_title">批量删除</string>
+    <string name="types_batch_delete_message">已选择 %1$d 个分类，请选择删除方式</string>
+    <string name="types_batch_delete_promote">提升子分类后删除</string>
+    <string name="types_batch_delete_subtree">删除整棵子树</string>
+
+    <!-- 批量拖拽移动 -->
+    <string name="types_batch_drag_hint">长按已选分类可拖动移动</string>
+    <string name="types_move_badge">移动 %1$d 个</string>
+    <string name="types_move_invalid_target">不能移动到自身或子分类下</string>
+
+    <!-- 颜色选择器：HSL 滑杆 + 预览 + HEX 三联动 -->
+    <string name="color_picker_title">选择颜色</string>
+    <string name="color_picker_hue">色相</string>
+    <string name="color_picker_saturation">饱和度</string>
+    <string name="color_picker_lightness">亮度</string>
+    <string name="color_picker_hex_label">十六进制</string>
+    <string name="color_picker_hex_error">请输入 #RRGGBB</string>
+
+    <!-- 分类选择器：只有叶子可选 -->
+    <string name="type_picker_hint">只能选择没有子分类的叶子节点</string>
+    <string name="type_picker_empty">暂无可选分类</string>
+    <string name="type_picker_root">一级分类</string>
+    <string name="type_picker_path">路径：%1$s</string>
+    <string name="type_picker_has_children">含子分类</string>
+</resources>

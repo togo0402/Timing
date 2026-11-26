@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 设置页 v1.1（Fluid Glass 分层版；不修改旧 strings_settings.xml） -->
+    <string name="settings2_subtitle">外观、数据与本机设置</string>
+
+    <string name="settings2_section_appearance">外观</string>
+    <string name="settings2_section_nfc">NFC 与计时</string>
+    <string name="settings2_section_data">数据</string>
+    <string name="settings2_section_permission">权限与保活</string>
+    <string name="settings2_section_about">关于</string>
+
+    <string name="settings2_theme_title">主题模式</string>
+    <string name="settings2_theme_desc">切换后立即生效，并记住选择</string>
+    <string name="settings2_theme_system">跟随系统</string>
+    <string name="settings2_theme_light">浅色</string>
+    <string name="settings2_theme_dark">深色</string>
+
+    <string name="settings2_nfc_bind_title">NFC 标签绑定</string>
+    <string name="settings2_nfc_bind_desc">为标签绑定分类，碰触即可开始或切换计时</string>
+    <string name="settings2_fgs_title">前台服务与通知</string>
+    <string name="settings2_fgs_body">计时期间以前台服务（specialUse）保持时长准确，并在通知栏显示进行中的计时与停止按钮；该前台服务类型仅在清单声明，没有运行时开关。</string>
+
+    <string name="settings2_about_entry">关于 Timing</string>
+    <string name="settings2_about_desc">版本、包名、作者与隐私声明</string>
+
+    <string name="settings2_footer">本应用不申请网络权限（无 INTERNET），数据仅保存在本机。</string>
+
+    <!-- 关于页 v1.1 补充 -->
+    <string name="about2_privacy_title">隐私与数据</string>
+    <string name="about2_privacy_body">本应用不申请 INTERNET 权限，也没有任何联网代码；所有时间记录、分类与设置仅保存在本机，不上传、不外发。</string>
+    <string name="about2_privacy_badge">无 INTERNET · 数据仅本机</string>
+</resources>

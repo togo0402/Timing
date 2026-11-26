@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 首页 / 时间轴（HomeScreen.kt、TimelineView.kt、GanttTimeline.kt）文案，独立文件，避免与其它模块字符串冲突 -->
+
+    <!-- 顶部 -->
+    <string name="home_title_today">今天</string>
+    <string name="home_title_yesterday">昨天</string>
+    <string name="home_action_backfill">补记</string>
+    <string name="home_cd_prev_day">前一天</string>
+    <string name="home_cd_next_day">后一天</string>
+    <string name="home_back_today">回到今天</string>
+    <string name="home_today_chip">今天</string>
+
+    <!-- 日期胶囊 / 月历（v1.2） -->
+    <string name="home_calendar_open">打开月历</string>
+    <string name="home_calendar_prev_month">上个月</string>
+    <string name="home_calendar_next_month">下个月</string>
+    <string name="home_calendar_hint">点击日期选择 · 点击空白收起</string>
+    <string name="home_calendar_month_title">%1$d 年 %2$d 月</string>
+    <string-array name="home_calendar_weekdays">
+        <item>一</item>
+        <item>二</item>
+        <item>三</item>
+        <item>四</item>
+        <item>五</item>
+        <item>六</item>
+        <item>日</item>
+    </string-array>
+
+    <!-- Hero 计时卡 -->
+    <string name="home_idle_title">未在计时</string>
+    <string name="home_ongoing">进行中</string>
+    <string name="home_goal_hint">已专注 · 目标 %1$d 分钟</string>
+    <string name="home_goal_over">已超时</string>
+    <string name="home_goal_minutes">目标 %1$d 分</string>
+    <string name="home_over_by">已超时 %1$s</string>
+    <string name="home_idle_hint">默认目标 %1$d 分钟，点击开始</string>
+    <string name="home_ring_percent">%1$d%%</string>
+    <string name="home_action_end">结束计时</string>
+    <string name="home_action_start">开始计时</string>
+    <string name="home_edit_target">修改本次目标</string>
+    <string name="home_target_dialog_title">本次目标</string>
+    <string name="home_target_input_label">目标分钟数</string>
+    <string name="home_target_input_hint">范围 1–1440 分钟</string>
+    <string name="home_target_invalid">请输入 1–1440 之间的整数</string>
+
+    <!-- 开始计时对话框 -->
+    <string name="home_start_dialog_title">选择活动</string>
+    <string name="home_start_empty">还没有可用的活动类型，请先到「分类」页创建。</string>
+    <string name="home_start_target_label">本次目标（分钟）</string>
+    <string name="home_start_target_default">默认 %1$d 分钟</string>
+    <string name="home_start_action">开始</string>
+
+    <!-- 时间轴 / 横向 Gantt（v1.2） -->
+    <string name="home_section_timeline">时间轴</string>
+    <string name="home_total_today">今日 %1$s</string>
+    <string name="home_total_day">%1$s %2$s</string>
+    <string name="home_live">LIVE</string>
+    <string name="home_gantt_empty">当天还没有记录 · 点击空白处补记</string>
+    <string name="home_gantt_legend">色条长度 = 时长 · 空白 = 未统计 · 红色 = 现在</string>
+</resources>

@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Timing UI design MCP tools",
+    "description": "Connects ui-ux-pro-mcp and wash-compose-mcp so UI design styles, colors, typography and Compose patterns are available as tools.",
+    "detail": "docs/DETAIL.md"
+  }
+}
