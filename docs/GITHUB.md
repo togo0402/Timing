@@ -1,12 +1,13 @@
 # GitHub 发布说明
 
-本机网络受 **Steam++ / hosts** 影响：`github.com` 被映射到 `127.0.0.1`，只有 Steam++ 加速开启时才能连上。当前 `127.0.0.1:443` 未监听，`git ls-remote` 报 `Could not connect to server`，因此**推送需要在 Steam++ 加速开启后执行**。
+已发布：<https://github.com/togo0402/Timing>（Public，默认分支 `main`）
 
-仓库已就绪：
+Release v1.3.0：<https://github.com/togo0402/Timing/releases/tag/v1.3.0>
+（Assets：`Timing-1.3.0-release.apk`、`Timing-1.3.0-source.zip`）
 
-- 本地 git 仓库已初始化，提交：`feat: Timing 1.3.0 源码归档...`
-- 远端已配置：`https://github.com/togo0402/Timing.git`
-- 源码包：`dist/Timing-1.3.0-source.zip`（16.6 MB，仅 git 跟踪文件，不含 keystore / local.properties / _local / build）
+本地 git 仓库、remote、tag 均已同步；`git status` 应为 `## main...origin/main`。
+
+本机网络受 **Steam++ / hosts** 影响：`github.com` 被映射到 `127.0.0.1`，只有 Steam++ 加速开启时才能连上；`gh` 已用设备码登录并 `gh auth setup-git`。
 
 ## 首次推送（推荐流程，见根目录 `GitHub 提交范本.md`）
 
